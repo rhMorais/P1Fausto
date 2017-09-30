@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = function(){
 
-    var schema = mongoose.Schema({
+    var schema = new mongoose.Schema({
         nome: {
             type: String,
             required: true 

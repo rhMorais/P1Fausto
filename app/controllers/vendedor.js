@@ -1,12 +1,11 @@
 
-
 module.exports = function(app){
-    
+
     var Vendedor = app.models.vendedor;
 
     var controller = {}
     
-    controller.listaVendedores = function(req, res){
+    controller.listaVendedor = function(req, res){
         var promise = Vendedor.find().exec()
         .then(
             function(vendedores){
@@ -23,8 +22,8 @@ module.exports = function(app){
         var _id = req.params.id;
         Vendedor.findById(_id).exec()
         .then(
-            function(contato){
-                if(!contato) throw new Error("Vendedor não encontrado");
+            function(vendedor){
+                if(!vendedor) throw new Error("Vendedor não encontrado");
                 res.json(vendedor);
             },
             function(erro){
@@ -71,7 +70,7 @@ module.exports = function(app){
             //     console.log(erro);
             //     res.status(500).json(erro);
             // }
-          );
+          //);
         }
     };
 
