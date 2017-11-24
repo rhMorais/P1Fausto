@@ -6,8 +6,7 @@ module.exports = function(app){
     var controller = {}
     
     controller.listaAtendente = function(req, res){
-        var promise = Atendente.find().exec()
-        .then(
+        Atendente.find().exec().then(
             function(atendentes){
                 res.json(atendentes);
             },
@@ -20,8 +19,7 @@ module.exports = function(app){
 
     controller.obtemAtendente = function(req, res){
         var _id = req.params.id;
-        Atendente.findById(_id).exec()
-        .then(
+        Atendente.findById(_id).exec().then(
             function(atendente){
                 if(!atendente) throw new Error("Atendente não encontrado");
                 res.json(atendente);
@@ -35,10 +33,10 @@ module.exports = function(app){
 
     controller.removeAtendente = function(req, res){
         var _id = req.params.id;
-        Atendente.remove({"_id" : _id}).exec()
-        .then(
+        
+        Atendente.remove({"_id" : _id}).exec().then(
             function(){
-                res.status(204).end();
+                res.status(203).end();
             },
             function(erro){
                 return console.error(erro);
