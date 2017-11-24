@@ -1,16 +1,17 @@
 {
   "name": "p1fausto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicação de gerencimento de depósito de bebidas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1 && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhMorais/P1Fausto.git"
   },
-  "author": "",
+  "author": "Rafael Henrique de Morais",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rhMorais/P1Fausto/issues"
