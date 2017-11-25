@@ -1,8 +1,8 @@
 var	express	=	require('express'); 
-var load = require('express-load');
+var consign = require('consign');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var consign = require('consign');
+var cors = require('cors');
 
 module.exports = function()	{ 
     var app = express();
@@ -14,9 +14,12 @@ module.exports = function()	{
     app.set('view engine', 'ejs');
     app.set('views', './app/views');
     
+    app.use(cors());
+
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
-    app.use(require('method-override')());
+    app.use(methodOverride());
+    
     consign({cwd: 'app'})
         .include('models')
         .then('controllers')

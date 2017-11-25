@@ -1,7 +1,9 @@
 import {Routes, RouterModule} from '@angular/router'
 
-import { VendedoresListaComponent } from './vendedores/vendedores-lista/vendedores-lista.component';
 import { AtendentesListaComponent } from './atendentes/atendentes-lista/atendentes-lista.component';
+import { AtendentesFormComponent} from './atendentes/atendentes-form/atendentes-form.component';
+
+import { VendedoresListaComponent } from './vendedores/vendedores-lista/vendedores-lista.component';
 import { ClientesListaComponent } from './clientes/clientes-lista/clientes-lista.component';
 import { PedidosListaComponent } from './pedidos/pedidos-lista/pedidos-lista.component';
 import { ProdutosListaComponent } from './produtos/produtos-lista/produtos-lista.component';
@@ -10,17 +12,22 @@ import { ProdutosListaComponent } from './produtos/produtos-lista/produtos-lista
 const routes : Routes = [
     {
         path: '',
-        component: VendedoresListaComponent,        
-    },
-
-    {
-        path: 'vendedores',
-        component: VendedoresListaComponent
+        component: AtendentesListaComponent,        
     },
     
     {
         path: 'atendentes',
         component: AtendentesListaComponent
+    },
+
+    {
+        path: 'atendentes/novo',
+        component: AtendentesFormComponent
+    },
+
+    {
+        path: 'atendentes/:id',
+        component: AtendentesFormComponent
     },
 
     {
@@ -36,7 +43,12 @@ const routes : Routes = [
     {
         path: 'vendedores',
         component: VendedoresListaComponent
-    }
+    },
+
+    {
+        path: 'vendedores',
+        component: VendedoresListaComponent
+    },
 ]
 
 export const RoutingModule = RouterModule.forRoot(routes);

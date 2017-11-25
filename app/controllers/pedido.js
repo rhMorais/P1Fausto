@@ -75,7 +75,7 @@ module.exports = function(app){
     };
 
     controller.criaPedido = function(req, res){
-        var pedido = new Pedido(req.body);
+        
         pedido.save(function(erro, pedido){
             if(erro){
                 res.status(500).end();
