@@ -4,9 +4,15 @@ import { AtendentesListaComponent } from './atendentes/atendentes-lista/atendent
 import { AtendentesFormComponent} from './atendentes/atendentes-form/atendentes-form.component';
 
 import { VendedoresListaComponent } from './vendedores/vendedores-lista/vendedores-lista.component';
+import { VendedoresFormComponent } from './vendedores/vendedores-form/vendedores-form.component';
+
 import { ClientesListaComponent } from './clientes/clientes-lista/clientes-lista.component';
-import { PedidosListaComponent } from './pedidos/pedidos-lista/pedidos-lista.component';
+import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
+
 import { ProdutosListaComponent } from './produtos/produtos-lista/produtos-lista.component';
+import { ProdutosFormComponent } from './produtos/produtos-form/produtos-form.component';
+
+import { PedidosListaComponent } from './pedidos/pedidos-lista/pedidos-lista.component';
 
 
 const routes : Routes = [
@@ -36,18 +42,33 @@ const routes : Routes = [
     },
 
     {
+        path: 'clientes/novo',
+        component: ClientesFormComponent
+    },
+
+    {
+        path: 'clientes/:id',
+        component: ClientesFormComponent
+    },
+
+    {
+        path: 'vendedores',
+        component: VendedoresListaComponent
+    },
+
+    {
+        path: 'vendedores/novo',
+        component: VendedoresFormComponent
+    },
+
+    {
+        path: 'vendedores/:id',
+        component: VendedoresFormComponent
+    },
+
+    {
         path: 'pedidos',
         component: PedidosListaComponent
-    },
-
-    {
-        path: 'vendedores',
-        component: VendedoresListaComponent
-    },
-
-    {
-        path: 'vendedores',
-        component: VendedoresListaComponent
     },
 ]
 
