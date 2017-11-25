@@ -5,9 +5,9 @@ module.exports = function(app){
 
     var controller = {}
     
-    controller.listaCliente = function(req, res){
-        var promise = Cliente.find().exec()
-        .then(
+    controller.listarCliente = function(req, res){
+        
+        Cliente.find().exec().then(
             function(clientes){
                 res.json(clientes);
             },
@@ -18,10 +18,9 @@ module.exports = function(app){
         );
     };
 
-    controller.obtemCliente = function(req, res){
+    controller.obterCliente = function(req, res){
         var _id = req.params.id;
-        Cliente.findById(_id).exec()
-        .then(
+        Cliente.findById(_id).exec().then(
             function(cliente){
                 if(!cliente) throw new Error("Cliente não encontrado");
                 res.json(cliente);
@@ -33,58 +32,45 @@ module.exports = function(app){
         );
     };
 
-    controller.removeCliente = function(req, res){
-        var _id = req.params.id;
-        Cliente.remove({"_id" : _id}).exec()
-        .then(
-            function(){
-                res.status(204).end();
-            },
+    controller.criarCliente = function(req, res){
+
+        Cliente.create(req.body).then(
+            function(erro, cliente){
+                res.status(201).json(cliente);
+            }, 
             function(erro){
-                return console.error(erro);
+                console.error(erro);
+                res.json(cliente);
             }
         );
     };
 
-    controller.salvaCliente = function(req, res){
+    controller.editarCliente = function(req, res){
         var _id = req.body._id;
 
-        req.body.emergencia = req.body.emergencia || null;
-
-        if(_id){
-            Cliente.findByIdAndUpdate(_id, req.body).exec()
-            .then(function(cliente){
-                res.json(cliente);
+        Cliente.findByIdAndUpdate(_id, req.body).then(
+            function(cliente){
+                res.status(200).json(cliente);
             },
             function(erro){
                 console.error(erro);
-                res.status(500).json(erro);
+                res.status(404).json('Cliente não encontrado para atualizar');
             }
-          );
-        }else{
-            // Cliente.create(req.body)
-            // .then(function(cliente){
-            //     res.status(201).json(cliente);
-            // },
-            // function(erro){
-            //     console.log(erro);
-            //     res.status(500).json(erro);
-            // }
-          //);
-        }
+        );
     };
 
-    controller.criaCliente = function(req, res){
-        var cliente = new Cliente(req.body);
-        cliente.save(function(erro, cliente){
-            if(erro){
-                res.status(500).end();
-                console.log(erro);
-            } else {
-                res.json(cliente);
+    controller.removerCliente = function(req, res){
+        var _id = req.params.id;
+
+        Cliente.remove({"_id" : _id}).then(
+            function(){
+                res.status(203).end();
+            },
+            function(erro){
+                console.error(erro);
             }
-        });
-    }
+        );
+    };
 
     return controller;
 }

@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Vendedores, VendedoresService } from '../../services/vendedores/vendedores.service';
+import { Clientes, ClientesService } from '../../services/clientes/clientes.service';
 import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
-  selector: 'app-vendedores-form',
-  templateUrl: './vendedores-form.component.html',
-  styleUrls: ['./vendedores-form.component.css'],
-  providers: [VendedoresService]
+  selector: 'app-clientes-form',
+  templateUrl: './clientes-form.component.html',
+  styleUrls: ['./clientes-form.component.css'],
+  providers: [ClientesService]
 })
-export class VendedoresFormComponent implements OnInit {
+export class ClientesFormComponent implements OnInit {
 
-  private title = 'Novo vendedor'
-  private model : Vendedores
+  private title = 'Novo cliente'
+  private model : Clientes
   
   constructor(
-    private ts: VendedoresService, 
+    private ts: ClientesService, 
     private router: Router,
     private aRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
   
-    this.model = new Vendedores()
+    this.model = new Clientes()
 
     this.aRoute.params.subscribe(
       // Se existir um parâmetro id, significa que queremos editar um objeto já exisente
@@ -29,7 +29,7 @@ export class VendedoresFormComponent implements OnInit {
         if(params['id']) {
           // Buscamos o objeto para edição
           this.ts.obterPorId(params['id']).subscribe(
-            (existente: Vendedores) => this.model = existente
+            (existente: Clientes) => this.model = existente
           )
         }
       }
@@ -43,7 +43,7 @@ export class VendedoresFormComponent implements OnInit {
 
     this.ts.salvar(this.model).subscribe(
       // Após a inserção ou atualização de um objeto, retorna à página de listagem
-      () => roteador.navigate(['/vendedores']),
+      () => roteador.navigate(['/clientes']),
       erro => console.error(erro)
     )
   }
