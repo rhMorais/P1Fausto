@@ -1,5 +1,22 @@
+<a [routerLink]="['/produtos/novo']" class="btn btn-primary btn-md">
+  Novo Produto
+</a>
+
 <h3>{{title}}</h3>
 
-<ul>
-  <li *ngFor="let produto of produtos">{{produto.titulo}}</li>
-</ul>
+<table class="table table-striped">
+  <tr>
+    <th>Descrição</th>
+    <th>Preço</th>
+    <th>Vendedor</th>
+  </tr *ngFor="let produto of produtos">
+    <td><a [routerLink]="['produtos', produto._id]">{{produto.descricao}}</a></td>
+    <td>{{produto.preco}}</td>
+    <td>{{produto.preco}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="exluir(produto._id)">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    </td>
+  </tr>
+</table>

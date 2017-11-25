@@ -5,9 +5,8 @@ module.exports = function(app){
 
     var controller = {}
     
-    controller.listaProduto = function(req, res){
-        var promise = Produto.find().exec()
-        .then(
+    controller.listarProduto = function(req, res){
+        Produto.find().exec().then(
             function(produtos){
                 res.json(produtos);
             },
@@ -18,10 +17,9 @@ module.exports = function(app){
         );
     };
 
-    controller.obtemProduto = function(req, res){
+    controller.obterProduto = function(req, res){
         var _id = req.params.id;
-        Produto.findById(_id).exec()
-        .then(
+        Produto.findById(_id).exec().then(
             function(produto){
                 if(!produto) throw new Error("Produto não encontrado");
                 res.json(produto);
@@ -33,58 +31,44 @@ module.exports = function(app){
         );
     };
 
-    controller.removeProduto = function(req, res){
-        var _id = req.params.id;
-        Produto.remove({"_id" : _id}).exec()
-        .then(
-            function(){
-                res.status(204).end();
-            },
-            function(erro){
-                return console.error(erro);
-            }
-        );
-    };
+    controller.criarProduto = function(req, res){
 
-    controller.salvaProduto = function(req, res){
-        var _id = req.body._id;
-
-        req.body.emergencia = req.body.emergencia || null;
-
-        if(_id){
-            Produto.findByIdAndUpdate(_id, req.body).exec()
-            .then(function(produto){
-                res.json(produto);
+        Produto.create(req.body).then(
+            function(produto){
+                res.status(201).json(produto);
             },
             function(erro){
                 console.error(erro);
                 res.status(500).json(erro);
             }
-          );
-        }else{
-            // Produto.create(req.body)
-            // .then(function(produto){
-            //     res.status(201).json(produto);
-            // },
-            // function(erro){
-            //     console.log(erro);
-            //     res.status(500).json(erro);
-            // }
-          //);
-        }
+        );
     };
 
-    controller.criaProduto = function(req, res){
-        var produto = new Produto(req.body);
-        produto.save(function(erro, produto){
-            if(erro){
-                res.status(500).end();
-                console.log(erro);
-            } else {
-                res.json(produto);
+    controller.editarProduto = function(req, res){
+        var _id = req.body._id;
+        
+        Produto.findByIdAndUpdate(_id, req.body).then(
+            function(produto){
+            res.status(200).json(produto);
+            },
+            function(erro){
+                console.error(erro);
+                res.status(404).json('Produto não encontrado');
             }
-        });
-    }
+        );
+    };
 
+    controller.removerProduto = function(req, res){
+        var _id = req.params.id;
+        
+        Produto.remove({"_id" : _id}).exec().then(
+            function(){
+                res.status(201).end();
+            },
+            function(erro){
+                console.error(erro);
+            }
+        );
+    };
     return controller;
 }

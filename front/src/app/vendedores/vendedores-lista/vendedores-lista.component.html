@@ -1,3 +1,24 @@
-<p>
-  vendedores-lista works!
-</p>
+<a [routerLink]="['/vendedores/novo']" class="btn btn-primary btn-md">
+  Novo Vendedor
+</a>
+
+<h3>{{title}}</h3>
+
+<table class="table table-striped">
+  <tr>
+    <th>nome</th>
+    <th>telefone</th>
+    <th>celular</th>
+    <th>empresa</th>
+  </tr *ngFor="let vendedor of vendedores">
+    <td><a [routerLink]="['vendedores', vendedor._id]">{{vendedor.nome}}</a></td>
+    <td>{{vendedor.telefone}}</td>
+    <td>{{vendedor.celular}}</td>
+    <td>empresa</td>
+    <td>
+      <button class="btn btn-danger" (click)="exluir(vendedor._id)">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    </td>
+  </tr>
+</table>

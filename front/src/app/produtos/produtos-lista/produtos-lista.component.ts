@@ -1,19 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { ProdutosService } from '../../services/produtos/produtos.service'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-produtos-lista',
   templateUrl: './produtos-lista.component.html',
-  styleUrls: ['./produtos-lista.component.css']
+  styleUrls: ['./produtos-lista.component.css'],
+  providers: [ProdutosService]
 })
 export class ProdutosListaComponent implements OnInit {
-  private produtos 
+
+  private produtos : any
   private title = 'Lista de Produtos'
 
-  constructor(private http: HttpClient) { 
-    this.http.get('http://localhost:3000/produtos')
-    .subscribe(dados => this.produtos = dados)
+  constructor(private service: ProdutosService) { 
+    this.atualizarLista()
   }  
+
+  atualizarLista(){
+    this.service.listarTodos().subscribe((dados: Response) => this.produtos = dados)
+  }
+
+  excluir(id: string){
+    if(confirm('Deseja realmente excluir este produto?')){
+      this.service.excluir(id).subscribe(() => this.atualizarLista())
+    }
+  }
+
   ngOnInit() {
   }
 

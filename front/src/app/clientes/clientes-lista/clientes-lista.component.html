@@ -1,3 +1,24 @@
-<p>
-  clientes-lista works!
-</p>
+<a [routerLink]="['/clientes/novo']" class="btn btn-primary btn-md">
+  Novo Cliente
+</a>
+
+<h3>{{title}}</h3>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Celular</th>
+    <th>Email</th>
+  </tr *ngFor="let cliente of clientes">
+    <td><a [routerLink]="['clientes', cliente._id]">{{cliente.Nome}}</a></td>
+    <td>{{cliente.cpf}}</td>
+    <td>{{cliente.celular}}</td>
+    <td>{{cliente.email}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="exluir(cliente._id)">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    </td>
+  </tr>
+</table>

@@ -8,7 +8,7 @@ module.exports = function () {
             required: true
         },
         preco: {
-            type: String,
+            type: Number,
             required: true
         },
         vendedor: {
