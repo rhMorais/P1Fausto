@@ -14,7 +14,6 @@ import { ProdutosFormComponent } from './produtos/produtos-form/produtos-form.co
 
 import { PedidosListaComponent } from './pedidos/pedidos-lista/pedidos-lista.component';
 
-
 const routes : Routes = [
     {
         path: '',
