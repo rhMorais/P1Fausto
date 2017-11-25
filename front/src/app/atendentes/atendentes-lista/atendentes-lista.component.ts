@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AtendentesService } from '../../services/atendentes/atendentes.service';
+import { AtendentesService, Atendentes } from '../../services/atendentes/atendentes.service';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-atendentes-lista',
   templateUrl: './atendentes-lista.component.html',
-  styleUrls: ['./atendentes-lista.component.css']
+  styleUrls: ['./atendentes-lista.component.css'],
+  providers: [AtendentesService]
 })
 export class AtendentesListaComponent implements OnInit {
+ 
   private atendentes : any
   private title = 'Lista de Atendentes'
 
