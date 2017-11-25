@@ -1,0 +1,29 @@
+<h2>{{title}}</h2>
+
+<form #vendedoresForm="ngForm" (submit)="enviar()">
+
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" class="form-control" [(ngModel)]="model.nome" />
+    </div>
+
+    <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" class="form-control" [(ngModel)]="model.telefone" />
+    </div>
+        
+    <div class="form-group">
+        <label for="celular">Celular</label>
+        <input type="text" id="celular" name="celular" class="form-control" [(ngModel)]="model.celular" />
+    </div>
+
+    <div class="form-group">
+        <label for="empresa">empresa</label>
+        <input type="text" id="empresa" name="empresa" class="form-control" [(ngModel)]="model.empresa" />
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Enviar">
+    </div>
+    
+</form>

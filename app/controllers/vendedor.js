@@ -5,9 +5,8 @@ module.exports = function(app){
 
     var controller = {}
     
-    controller.listaVendedor = function(req, res){
-        var promise = Vendedor.find().exec()
-        .then(
+    controller.listarVendedor = function(req, res){
+        Vendedor.find().exec().then(
             function(vendedores){
                 res.json(vendedores);
             },
@@ -18,10 +17,9 @@ module.exports = function(app){
         );
     };
 
-    controller.obtemVendedor = function(req, res){
+    controller.obterVendedor = function(req, res){
         var _id = req.params.id;
-        Vendedor.findById(_id).exec()
-        .then(
+        Vendedor.findById(_id).exec().then(
             function(vendedor){
                 if(!vendedor) throw new Error("Vendedor não encontrado");
                 res.json(vendedor);
@@ -33,58 +31,45 @@ module.exports = function(app){
         );
     };
 
-    controller.removeVendedor = function(req, res){
-        var _id = req.params.id;
-        Vendedor.remove({"_id" : _id}).exec()
-        .then(
-            function(){
-                res.status(204).end();
+    controller.criarVendedor = function(req, res){
+
+        Vendedor.create(req.body).then(
+            function(vendedor){
+                res.status(201).json(vendedor);
             },
-            function(erro){
-                return console.error(erro);
+            function(erro) {
+                console.error(erro);
+                res.status(500).json(erro);
             }
         );
     };
 
-    controller.salvaVendedor = function(req, res){
+    controller.editarVendedor = function(req, res){
         var _id = req.body._id;
 
-        req.body.emergencia = req.body.emergencia || null;
-
-        if(_id){
-            Vendedor.findByIdAndUpdate(_id, req.body).exec()
-            .then(function(vendedor){
-                res.json(vendedor);
+        Vendedor.findByIdAndUpdate(_id, req.body).then(
+            function(vendedor){
+                res.status(200).json(vendedor);
             },
             function(erro){
                 console.error(erro);
-                res.status(500).json(erro);
+                res.status(404).json('Vendedor não encontrado para atualizar');
             }
-          );
-        }else{
-            // Vendedor.create(req.body)
-            // .then(function(vendedor){
-            //     res.status(201).json(vendedor);
-            // },
-            // function(erro){
-            //     console.log(erro);
-            //     res.status(500).json(erro);
-            // }
-          //);
-        }
+        );
     };
 
-    controller.criaVendedor = function(req, res){
-        var vendedor = new Vendedor(req.body);
-        vendedor.save(function(erro, vendedor){
-            if(erro){
-                res.status(500).end();
-                console.log(erro);
-            } else {
-                res.json(vendedor);
+    controller.removerVendedor = function(req, res){
+        var _id = req.params.id;
+        
+        Vendedor.remove({"_id" : _id}).exec().then(
+            function(){
+                res.status(203).end();
+            },
+            function(erro){
+                console.error(erro);
             }
-        });
-    }
+        );
+    };
 
     return controller;
 }

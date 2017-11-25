@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {VendedoresService} from '../../services/vendedores/vendedores.service';
 
 @Component({
   selector: 'app-vendedores-lista',
@@ -7,14 +7,23 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./vendedores-lista.component.css']
 })
 export class VendedoresListaComponent implements OnInit {
-  private vendedores 
+  private vendedores : any
   private title = 'Lista de Vendedores'
 
-  constructor(private http: HttpClient) { 
-    this.http.get('http://localhost:3000/vendedores')
-    .subscribe(dados => this.vendedores = dados)
+  constructor(private service: VendedoresService) { 
+    this.atualizarLista()
   }  
-  ngOnInit() {
+
+  atualizarLista(){
+    this.service.listarTodos().subscribe((dados: Response) => this.vendedores = dados)
   }
 
+  excluir(id: string){
+    if(confirm('Deseja realmente excluir este vendedor?')){
+      this.service.excluir(id).subscribe(() => this.atualizarLista())
+    }
+  }
+
+  ngOnInit() {
+  }
 }
