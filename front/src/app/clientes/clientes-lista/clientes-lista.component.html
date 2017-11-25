@@ -12,12 +12,12 @@
     <th>Email</th>
   </tr>
   <tr *ngFor="let cliente of clientes">
-    <td><a [routerLink]="['clientes', cliente._id]">{{cliente.Nome}}</a></td>
+    <td><a [routerLink]="[cliente._id]">{{cliente.nome}}</a></td>
     <td>{{cliente.cpf}}</td>
     <td>{{cliente.celular}}</td>
     <td>{{cliente.email}}</td>
     <td>
-      <button class="btn btn-danger" (click)="exluir(cliente._id)">
+      <button class="btn btn-danger" (click)="excluir(cliente._id)">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
     </td>

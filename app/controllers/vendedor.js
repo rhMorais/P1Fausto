@@ -1,11 +1,12 @@
 
 module.exports = function(app){
 
-    var Vendedor = app.models.vendedor;
+    var controller = {};
 
-    var controller = {}
+    var Vendedor = app.models.vendedor;
     
     controller.listarVendedor = function(req, res){
+        
         Vendedor.find().exec().then(
             function(vendedores){
                 res.json(vendedores);

@@ -6,6 +6,7 @@ module.exports = function(app){
     var Atendente = app.models.atendente;
     
     controller.listarAtendente = function(req, res){
+        
         Atendente.find().exec().then(
             function(atendentes){
                 res.json(atendentes);

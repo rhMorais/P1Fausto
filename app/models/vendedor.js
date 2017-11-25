@@ -18,10 +18,6 @@ module.exports = function(){
         empresa: {
             type: String,
             required: true
-        },
-        emergencia: {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Vendedor'
         }
     });
 

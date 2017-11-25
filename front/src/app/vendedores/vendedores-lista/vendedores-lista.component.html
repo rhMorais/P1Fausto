@@ -6,18 +6,18 @@
 
 <table class="table table-striped">
   <tr>
-    <th>nome</th>
-    <th>telefone</th>
-    <th>celular</th>
-    <th>empresa</th>
+    <th>Nome</th>
+    <th>Telefone</th>
+    <th>Celular</th>
+    <th>Empresa</th>
   </tr>
   <tr *ngFor="let vendedor of vendedores">
-    <td><a [routerLink]="['vendedores', vendedor._id]">{{vendedor.nome}}</a></td>
+    <td><a [routerLink]="[vendedor._id]">{{vendedor.nome}}</a></td>
     <td>{{vendedor.telefone}}</td>
     <td>{{vendedor.celular}}</td>
-    <td>empresa</td>
+    <td>{{vendedor.empresa}}</td>
     <td>
-      <button class="btn btn-danger" (click)="exluir(vendedor._id)">
+      <button class="btn btn-danger" (click)="excluir(vendedor._id)">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
     </td>

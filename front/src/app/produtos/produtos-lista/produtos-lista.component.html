@@ -11,11 +11,11 @@
     <th>Vendedor</th>
   </tr>
   <tr *ngFor="let produto of produtos">
-    <td><a [routerLink]="['produtos', produto._id]">{{produto.descricao}}</a></td>
+    <td><a [routerLink]="[produto._id]">{{produto.descricao}}</a></td>
     <td>{{produto.preco}}</td>
     <td>{{produto.preco}}</td>
     <td>
-      <button class="btn btn-danger" (click)="exluir(produto._id)">
+      <button class="btn btn-danger" (click)="excluir(produto._id)">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
     </td>

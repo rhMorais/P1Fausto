@@ -1,4 +1,4 @@
-import {Routes, RouterModule} from '@angular/router'
+import { Routes, RouterModule } from '@angular/router'
 
 import { AtendentesListaComponent } from './atendentes/atendentes-lista/atendentes-lista.component';
 import { AtendentesFormComponent} from './atendentes/atendentes-form/atendentes-form.component';
@@ -63,6 +63,21 @@ const routes : Routes = [
     {
         path: 'vendedores/:id',
         component: VendedoresFormComponent
+    },
+
+    {
+        path: 'produtos',
+        component: ProdutosListaComponent
+    },
+
+    {
+        path: 'produtos/novo',
+        component: ProdutosFormComponent
+    },
+
+    {
+        path: 'produtos/:id',
+        component: ProdutosFormComponent
     },
 
     {

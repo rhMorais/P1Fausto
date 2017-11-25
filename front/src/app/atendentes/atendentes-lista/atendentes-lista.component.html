@@ -9,9 +9,9 @@
     <th>Nome</th>
   </tr>
   <tr *ngFor="let atendente of atendentes">
-    <td><a [routerLink]="['atendentes', atendente._id]">{{atendente.descricao}}</a></td>
+    <td><a [routerLink]="[atendente._id]">{{atendente.nome}}</a></td>
     <td>
-      <button class="btn btn-danger" (click)="exluir(atendente._id)">
+      <button class="btn btn-danger" (click)="excluir(atendente._id)">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
     </td>

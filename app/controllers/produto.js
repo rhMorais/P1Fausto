@@ -3,7 +3,7 @@ module.exports = function(app){
 
     var Produto = app.models.produto;
 
-    var controller = {}
+    var controller = {};
     
     controller.listarProduto = function(req, res){
         Produto.find().exec().then(

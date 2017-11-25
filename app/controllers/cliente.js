@@ -1,9 +1,9 @@
 
 module.exports = function(app){
 
-    var Cliente = app.models.cliente;
+    var controller = {};
 
-    var controller = {}
+    var Cliente = app.models.cliente;
     
     controller.listarCliente = function(req, res){
         
@@ -35,12 +35,12 @@ module.exports = function(app){
     controller.criarCliente = function(req, res){
 
         Cliente.create(req.body).then(
-            function(erro, cliente){
+            function(cliente){
                 res.status(201).json(cliente);
             }, 
             function(erro){
                 console.error(erro);
-                res.json(cliente);
+                res.status(500).json(erro);
             }
         );
     };
@@ -62,7 +62,7 @@ module.exports = function(app){
     controller.removerCliente = function(req, res){
         var _id = req.params.id;
 
-        Cliente.remove({"_id" : _id}).then(
+        Cliente.remove({"_id" : _id}).exec().then(
             function(){
                 res.status(203).end();
             },
