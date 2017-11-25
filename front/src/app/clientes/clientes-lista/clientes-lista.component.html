@@ -10,7 +10,8 @@
     <th>CPF</th>
     <th>Celular</th>
     <th>Email</th>
-  </tr *ngFor="let cliente of clientes">
+  </tr>
+  <tr *ngFor="let cliente of clientes">
     <td><a [routerLink]="['clientes', cliente._id]">{{cliente.Nome}}</a></td>
     <td>{{cliente.cpf}}</td>
     <td>{{cliente.celular}}</td>

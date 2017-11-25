@@ -9,7 +9,8 @@
     <th>Descrição</th>
     <th>Preço</th>
     <th>Vendedor</th>
-  </tr *ngFor="let produto of produtos">
+  </tr>
+  <tr *ngFor="let produto of produtos">
     <td><a [routerLink]="['produtos', produto._id]">{{produto.descricao}}</a></td>
     <td>{{produto.preco}}</td>
     <td>{{produto.preco}}</td>

@@ -7,7 +7,8 @@
 <table class="table table-striped">
   <tr>
     <th>Nome</th>
-  </tr *ngFor="let atendente of atendentes">
+  </tr>
+  <tr *ngFor="let atendente of atendentes">
     <td><a [routerLink]="['atendentes', atendente._id]">{{atendente.descricao}}</a></td>
     <td>
       <button class="btn btn-danger" (click)="exluir(atendente._id)">

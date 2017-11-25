@@ -10,7 +10,8 @@
     <th>telefone</th>
     <th>celular</th>
     <th>empresa</th>
-  </tr *ngFor="let vendedor of vendedores">
+  </tr>
+  <tr *ngFor="let vendedor of vendedores">
     <td><a [routerLink]="['vendedores', vendedor._id]">{{vendedor.nome}}</a></td>
     <td>{{vendedor.telefone}}</td>
     <td>{{vendedor.celular}}</td>

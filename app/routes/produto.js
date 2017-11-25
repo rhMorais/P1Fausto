@@ -5,5 +5,5 @@ module.exports= function(app){
     app.get('/produtos/:id', controller.obterProduto);
     app.post('/produtos', controller.criarProduto);
     app.put('/produtos', controller.editarProduto);
-    app.delete('/produtos/:id', controller.removeProduto);
+    app.delete('/produtos/:id', controller.removerProduto);
 };
