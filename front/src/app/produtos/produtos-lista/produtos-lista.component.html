@@ -13,7 +13,7 @@
   <tr *ngFor="let produto of produtos">
     <td><a [routerLink]="[produto._id]">{{produto.descricao}}</a></td>
     <td>{{produto.preco}}</td>
-    <td>{{produto.preco}}</td>
+    <td>{{produto.vendedor}}</td>
     <td>
       <button class="btn btn-danger" (click)="excluir(produto._id)">
         <span class="glyphicon glyphicon-trash"></span>

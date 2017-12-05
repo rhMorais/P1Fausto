@@ -21,5 +21,5 @@ module.exports = function(){
         }
     });
 
-    return mongoose.model('Vendedor', schema);
+    return mongoose.model('Vendedore', schema);
 }

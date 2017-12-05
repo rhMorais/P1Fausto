@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 
 export class Atendentes {
@@ -22,10 +22,10 @@ export class AtendentesService {
 
   public salvar(a: Atendentes){
     if(a._id){
-      return this.http.post('http://localhost:3000/atendentes', a)
+      return this.http.put('http://localhost:3000/atendentes', a)
     }
     else{
-      return this.http.put('http://localhost:3000/atendentes', a)
+      return this.http.post('http://localhost:3000/atendentes', a)
     }
   }
 

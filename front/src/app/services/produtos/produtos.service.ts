@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http'
 
 
 export class Produtos {
- public _id: string;
- public descricao: string;
- public preco: Number;
- public vendedor: string;
+  public _id: string;
+  public descricao: string;
+  public preco: Number;
+  public vendedor: string;
 }
 
 @Injectable()
@@ -24,10 +24,10 @@ export class ProdutosService {
 
   public salvar(a: Produtos){
     if(a._id){
-      return this.http.post('http://localhost:3000/produtos', a)
+      return this.http.put('http://localhost:3000/produtos', a)
     }
     else{
-      return this.http.put('http://localhost:3000/produtos', a)
+      return this.http.post('http://localhost:3000/produtos', a)
     }
   }
 

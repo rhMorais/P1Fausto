@@ -26,10 +26,10 @@ export class ClientesService {
 
   public salvar(a: Clientes){
     if(a._id){
-      return this.http.post('http://localhost:3000/clientes', a)
+      return this.http.put('http://localhost:3000/clientes', a)
     }
     else{
-      return this.http.put('http://localhost:3000/clientes', a)
+      return this.http.post('http://localhost:3000/clientes', a)
     }
   }
 
