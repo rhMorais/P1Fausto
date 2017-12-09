@@ -16,11 +16,12 @@
         <label for="vendedor">Vendedor</label>
         <select name="vendedor" id="vendedor" class="form-control" [(ngModel)]="model.vendedor">
             <option value="">(Selecione)</option>
-            <option *ngFor="let ven of vendedores | async" [ngValue]="ven._id">{{cat.descricao}}</option>
+            <option *ngFor="let ven of vendedores | async" [ngValue]="ven._id">{{ven.nome}}</option>
         </select>
     </div>
 
     <div class="text-center">
+        <input class="btn btn-primary" type="button" value="Voltar" (click)="voltar()">
         <input class="btn btn-primary" type="submit" value="Enviar">
     </div>
     

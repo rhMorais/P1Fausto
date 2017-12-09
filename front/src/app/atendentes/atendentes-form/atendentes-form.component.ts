@@ -10,41 +10,49 @@ import { Router, ActivatedRoute } from '@angular/router'
 })
 export class AtendentesFormComponent implements OnInit {
 
- private title = 'Novo Atendente'
- private model : Atendentes
-  constructor(
-   private ts: AtendentesService,
-   private router: Router,
-   private aRoute: ActivatedRoute
- ) { }
+  private title = 'Novo Atendente'
+  private model : Atendentes
 
- ngOnInit() {
+  constructor(
+    private ts: AtendentesService,
+    private router: Router,
+    private aRoute: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+
     this.model = new Atendentes()      
 
-   this.aRoute.params.subscribe(
+    this.aRoute.params.subscribe(
      // Se existir um parâmetro id, significa que queremos editar um objeto já exisente
-     params => {
-       if(params['id']) {
+      params => {
+        if(params['id']) {
          // Buscamos o objeto para edição
-         this.ts.obterPorId(params['id']).subscribe(
-           (existente: Atendentes) => this.model = existente
-         )
-       }
-     }
-   )
+          this.ts.obterPorId(params['id']).subscribe(
+            (existente: Atendentes) => this.model = existente
+          )
+        }
+      }
+    )
   }
 
- enviar() {
+  enviar() {
    // Preservando o roteador para evitar que a referência ao objeto se perca
-   let roteador = this.router
+    let roteador = this.router
 
-   this.ts.salvar(this.model).subscribe(
-     // Após a inserção ou atualização de um objeto, retorna à página de listagem
-     () => roteador.navigate(['/atendentes']),
-     erro => console.error(erro)
-   )
- }
- }
+    this.ts.salvar(this.model).subscribe(
+      // Após a inserção ou atualização de um objeto, retorna à página de listagem
+      () => roteador.navigate(['/atendentes']),
+      erro => console.error(erro)
+    )
+    alert("Atendente inserido/editado com sucesso!")
+  }
+
+  voltar() {
+    let roteador = this.router
+    roteador.navigate(['/atendentes'])
+  }
+}
 
 
 

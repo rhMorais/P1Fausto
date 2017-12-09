@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'Deposito';
-  message: 'Olá Rafael';
+  title = 'Depósito de Bebidas';
+  message = 'Olá Rafael';
 }

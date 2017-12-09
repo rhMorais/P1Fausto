@@ -46,8 +46,14 @@ export class ClientesFormComponent implements OnInit {
       () => roteador.navigate(['/clientes']),
       erro => console.error(erro)
     )
+    alert("Cliente inserido/editado com sucesso!")
+    
   }
-  
+  voltar() {
+    let roteador = this.router
+    roteador.navigate(['/clientes'])
+  }
+
 }
 
 

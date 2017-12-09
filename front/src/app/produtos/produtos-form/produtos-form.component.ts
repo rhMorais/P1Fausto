@@ -40,7 +40,6 @@ export class ProdutosFormComponent implements OnInit {
         }
       }
     )
-  
   }
 
   enviar() {
@@ -52,6 +51,13 @@ export class ProdutosFormComponent implements OnInit {
       () => roteador.navigate(['/produtos']),
       erro => console.error(erro)
     )
+    alert("Produto inserido/editado com sucesso!")
+    
+  }
+
+  voltar() {
+    let roteador = this.router
+    roteador.navigate(['/produtos'])
   }
   
 }

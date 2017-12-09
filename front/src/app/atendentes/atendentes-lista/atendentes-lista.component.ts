@@ -22,12 +22,11 @@ export class AtendentesListaComponent implements OnInit {
   }
 
   excluir(id: string){
-    if(confirm('Deseja realemnte excluir este atendente?')){
+    if(confirm('Deseja realmente excluir este atendente?')){
       this.service.excluir(id).subscribe(() => this.atualizarLista())
     }
   }
    
   ngOnInit() {
   }
-
 }

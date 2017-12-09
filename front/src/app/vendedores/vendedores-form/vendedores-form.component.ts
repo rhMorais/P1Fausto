@@ -34,7 +34,6 @@ export class VendedoresFormComponent implements OnInit {
         }
       }
     )
-  
   }
 
   enviar() {
@@ -46,6 +45,12 @@ export class VendedoresFormComponent implements OnInit {
       () => roteador.navigate(['/vendedores']),
       erro => console.error(erro)
     )
+    alert("Vendedor inserido/editado com sucesso!")
+  }
+
+  voltar() {
+    let roteador = this.router
+    roteador.navigate(['/vendedores'])
   }
   
 }
